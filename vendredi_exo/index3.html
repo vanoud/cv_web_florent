@@ -1,0 +1,160 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+        content="width=device-width, initial-scale=0.37, shrink-to-fit=no, minimum-scale=0.6, maximum-scale=0.6">
+    <title>Le Juste Prix - Javascript</title>
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+        integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+    <style>
+        html,
+        body {
+            background-color: #232020;
+            min-width: 500px;
+        }
+
+        header {
+            color: #ff7315;
+            text-align: center;
+            font-size: 3em;
+            font-family: 'Courier New', Courier, monospace;
+        }
+
+        #instructions {
+            color: white;
+        }
+
+        .instruction {
+            padding: 15px;
+            margin: 10px 0;
+            border-radius: 5px;
+        }
+
+        .plus {
+            background-color: #f67280;
+        }
+
+        .moins {
+            background-color: #ffa372;
+        }
+
+        .fini {
+            background-color: #0c9463;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+
+        <div class="row justify-content-center mt-5">
+            <header>
+                Le Juste Prix
+            </header>
+        </div>
+
+        <!-- Formulaire -->
+        <div class="row justify-content-center mt-5 mb-4">
+            <div class="col-lg-8">
+                <div class="bg-light p-5 shadow">
+
+                    <form id="formulaire">
+                        <div class="row">
+                            <div class="col">
+                                <input id="prix" class="form-control"
+                                    placeholder="Devinez le prix ! (entre 0 et 100)">
+                            </div>
+                            <button type="submit" class="btn btn-primary">Deviner</button>
+                        </div>
+                        <small class="text-danger" hidden="">Vous devez rentrer un nombre.</small>
+                    </form>
+
+                </div>
+            </div>
+        </div>
+
+        <!-- Instructions -->
+        <div class="row justify-content-center">
+            <div id="instructions" class="col-lg-8"></div>
+        </div>
+
+    </div>
+    <script >
+        let input = document.querySelector('#prix');
+let error = document.querySelector('small');
+let formulaire = document.querySelector('#formulaire');
+let prix = random(1, 100);
+let coups = 0;
+let nombreChoisi;
+
+function random(min, max) {
+    min = Math.ceil(min);
+    max = Math.floor(max);
+    return Math.floor(Math.random() * (max - min + 1)) + min;
+}
+
+function rejouer() {
+    let rejouer = confirm("Voulez-vous rejouer ?");
+    if (rejouer) {
+        document.querySelectorAll(".instruction").forEach(e => e.parentNode.removeChild(e));
+        prix = random(1, 100);
+        coups = 0;
+    } else {
+        document.location.reload(true);
+    }
+}
+
+
+function verifier(nombre) {
+    let instruction = document.createElement('div');
+    if (nombre == prix) {
+        instruction.textContent = "#"+ coups +" ( "+nombre+" )"+" Vous avez trouvé le juste prix !";
+        instruction.className = "instruction fini";
+        document.querySelector('#instructions').prepend(instruction);
+        setTimeout(rejouer, 3000);
+        
+        
+    } else if (nombre > prix) {
+        instruction.textContent = "#"+ coups +" ( "+nombre+" )"+" C'est moins !";
+        instruction.className = "instruction moins";
+    } else if (nombre < prix) {
+        instruction.textContent = "#" + coups + " ( " + nombre + " )" +" C'est plus !";
+        instruction.className = "instruction plus";
+    }
+    if (nombre != prix) {
+        document.querySelector('#instructions').prepend(instruction);
+    }
+    
+}
+
+error.hidden = true;
+
+input.addEventListener('keyup', () => {
+    if (isNaN(input.value)) {
+        error.hidden = false;
+    } else {
+        error.hidden = true;
+    }
+});
+
+formulaire.addEventListener('submit', (e) => {
+    e.preventDefault();
+    if (isNaN(input.value) || input.value == "") {
+        input.style.borderColor = "red";
+    } else {
+        coups++;
+        input.style.borderColor = "silver";
+        nombreChoisi = input.value;
+        input.value = "";
+        input.focus();
+        verifier(nombreChoisi);
+    }
+});
+    </script>
+
+
+</body>
+
+</html>
