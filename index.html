@@ -18,6 +18,8 @@
       <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
       <link href='https://fonts.googleapis.com/css?family=Oswald:400,700|Lato:400,300' rel='stylesheet' type='text/css'>
       <link rel="stylesheet" href="./assets/style.css">
+
+      s
     
    </head>
 
@@ -31,6 +33,11 @@
             <script>
                function imprimer() {
                   window.print();
+               }
+               function script() {
+                  
+                  let a = document.querySelector("headshot").style.display = "hidden;"
+                  
                }
             </script>
          </div>
@@ -47,9 +54,8 @@
                </div>
             </div>
             <div class="mainpage">
-               <div id="headshot">
-                  <img id="avatar" src="./img/photo.jpg" alt="Margus Lillemagi"
-                     title="See olen mina" />
+               <div id="headshot" onmouseover="script()" >
+                  <img id="avatar" src="./img/photo.jpg" alt="Margus Lillemagi"title="See olen mina" />
                </div>
                <div id="name">
                   <h1>Florent</br>Vanoudheusden<span class="date-petit">&nbsp;&nbsp;14 Avril 1991</span></h1>

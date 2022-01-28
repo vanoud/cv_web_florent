@@ -1,0 +1,144 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
+    <meta name="generator" content="Hugo 0.88.1">
+    <title>Product example · Bootstrap v5.1</title>
+
+    <link rel="canonical" href="https://getbootstrap.com/docs/5.1/examples/product/">
+
+    
+
+    <!-- Bootstrap core CSS -->
+<link href="./assets/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <style>
+      .bd-placeholder-img {
+        font-size: 1.125rem;
+        text-anchor: middle;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        user-select: none;
+      }
+
+      @media (min-width: 768px) {
+        .bd-placeholder-img-lg {
+          font-size: 3.5rem;
+        }
+      }
+    </style>
+
+    
+    <!-- Custom styles for this template -->
+    <link href="product.css" rel="stylesheet">
+
+    
+  </head>
+  <body>
+    
+<header class="site-header sticky-top py-1">
+  <nav class="container d-flex flex-column flex-md-row justify-content-between">
+    <a class="py-2" href="#" aria-label="Product">
+      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="d-block mx-auto" role="img" viewBox="0 0 24 24"><title>Product</title><circle cx="12" cy="12" r="10"/><path d="M14.31 8l5.74 9.94M9.69 8h11.48M7.38 12l5.74-9.94M9.69 16L3.95 6.06M14.31 16H2.83m13.79-4l-5.74 9.94"/></svg>
+    </a>
+    <a class="py-2 d-none d-md-inline-block" href="index.html">Page 1</a>
+    <a class="py-2 d-none d-md-inline-block" href="index2.html">Calculatrice</a>
+    <a class="py-2 d-none d-md-inline-block" href="index3.html">page 3</a>
+    <a class="py-2 d-none d-md-inline-block" href="index4.html">page 4</a>
+
+  </nav>
+</header>
+
+<main>
+
+<div class="carou1">
+
+  <div class="d-md-flex flex-md-equal w-100 my-md-3 ps-md-3">
+    <div id="container-0" class="bg-dark me-md-3 pt-3 px-3 pt-md-5 px-md-5 text-center text-white overflow-hidden movin" onclick="test(this)">
+      <div class="my-3 py-3" ">
+        <h2 class="display-5">DIV1</h2>
+        <p class="lead">osdjfgihybadhyhezdbgfiuzrbgiyu.</p>
+      </div>
+      <div class="bg-light shadow-sm mx-auto" style="width: 80%; height: 300px; border-radius: 21px 21px 0 0;"></div>
+    </div>
+    <div id="container-1" class="bg-light me-md-3 pt-3 px-3 pt-md-5 px-md-5 text-center overflow-hidden" onclick="test(this)">
+      <div class="my-3 p-3">
+        <h2 class="display-5">DIV2</h2>
+        <p class="lead">osdjfgihybadhyhezdbgfiuzrbgiyu.</p>
+      </div>
+      <div class="bg-dark shadow-sm mx-auto" style="width: 80%; height: 300px; border-radius: 21px 21px 0 0;"></div>
+    </div>
+  </div>
+
+  <div class="d-md-flex flex-md-equal w-100 my-md-3 ps-md-3">
+    <div id="container-2" class="bg-light me-md-3 pt-3 px-3 pt-md-5 px-md-5 text-center overflow-hidden" onclick="test(this)">
+      <div class="my-3 p-3">
+        <h2 class="display-5">DIV3</h2>
+        <p class="lead">And an even wittier subheading.</p>
+      </div>
+      <div class="bg-dark shadow-sm mx-auto" style="width: 80%; height: 300px; border-radius: 21px 21px 0 0;"></div>
+    </div>
+    <div id="container-3" class="bg-primary me-md-3 pt-3 px-3 pt-md-5 px-md-5 text-center text-white overflow-hidden" onclick="test(this)">
+      <div class="my-3 py-3">
+        <h2 class="display-5">DIV4</h2>
+        <p class="lead">sdfoguihzoiefbnuaejfiuregh.</p>
+      </div>
+      <div class="bg-light shadow-sm mx-auto" style="width: 80%; height: 300px; border-radius: 21px 21px 0 0;"></div>
+    </div>
+  </div>
+</div>
+
+
+
+
+
+</main>
+
+<footer class="container py-5">
+    <div class="row">
+        <div class="col-12 col-md">
+
+        </div>
+    </div>
+</footer>
+
+
+    <script src="../assets/dist/js/bootstrap.bundle.min.js"></script>
+
+      
+  </body>
+
+  <!-- <script src="./script.js"></script> -->
+  <script>
+
+
+    let htmlMapping = {
+        1: document.getElementById('container-0').innerHTML,
+        2: document.getElementById('container-1').innerHTML,
+        3: document.getElementById('container-2').innerHTML,
+        4: document.getElementById('container-3').innerHTML,
+    }
+    let mappingOrder = {0:1, 1:2, 2:3, 3:4};
+
+    function test(){
+        for (let index = 0; index < Object.keys(mappingOrder).length; index++) {
+                mappingOrder[index]++;
+                if(mappingOrder[index] > 4) {
+                    mappingOrder[index] = 1;
+                }
+                let elem = document.getElementById('container-'+index);
+                // console.log('container-'+index+ " : remplacement par html id " +  mappingOrder[index]);
+                elem.innerHTML = htmlMapping[mappingOrder[index]];
+        }
+        console.log(mappingOrder);
+    }
+
+</script>
+</html>
+
+
+      
+  
